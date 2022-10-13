@@ -52,7 +52,7 @@ public class Ticket {
         this.cell = cell;
     }
 
- /*   public int getUserId() {
+ /**   public int getUserId() {
         return userId;
     }
 
