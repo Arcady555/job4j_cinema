@@ -1,4 +1,4 @@
-package ru.job4j.persistence.model;
+package ru.job4j.model;
 
 public class Theatre {
     private int row;
