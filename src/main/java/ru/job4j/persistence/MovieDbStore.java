@@ -5,7 +5,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
-import ru.job4j.persistence.model.Movie;
+import ru.job4j.model.Movie;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.job4j.persistence.model.Ticket;
+import ru.job4j.model.Ticket;
 import ru.job4j.service.MovieService;
 import ru.job4j.service.TheatreService;
 import ru.job4j.service.TicketService;

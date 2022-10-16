@@ -3,7 +3,7 @@ package ru.job4j.service;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
 import ru.job4j.persistence.MovieDbStore;
-import ru.job4j.persistence.model.Movie;
+import ru.job4j.model.Movie;
 
 import java.util.List;
 

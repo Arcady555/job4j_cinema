@@ -2,7 +2,7 @@ package ru.job4j.persistence;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
-import ru.job4j.persistence.model.Theatre;
+import ru.job4j.model.Theatre;
 
 import java.util.ArrayList;
 import java.util.List;

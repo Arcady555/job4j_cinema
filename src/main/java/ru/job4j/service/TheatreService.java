@@ -3,7 +3,7 @@ package ru.job4j.service;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
 import ru.job4j.persistence.TheatreLayout;
-import ru.job4j.persistence.model.Theatre;
+import ru.job4j.model.Theatre;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
