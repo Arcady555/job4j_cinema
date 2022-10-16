@@ -13,7 +13,6 @@ import ru.job4j.service.MovieService;
 import ru.job4j.service.TheatreService;
 import ru.job4j.service.TicketService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -38,9 +37,7 @@ public class TicketController {
     }
 
     @PostMapping("/theatre")
-    public String placeInTheatrePost(HttpServletRequest req, @ModelAttribute Ticket ticket) {
-        int id = Integer.parseInt(req.getParameter("idMovie"));
-        ticket.setMovieId(id);
+    public String placeInTheatrePost(@ModelAttribute Ticket ticket) {
         ticketService.add(ticket);
         return "redirect:/ticket";
     }
