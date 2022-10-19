@@ -4,14 +4,11 @@ import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.job4j.model.Ticket;
 import ru.job4j.service.MovieService;
-import ru.job4j.service.TheatreService;
 import ru.job4j.service.TicketService;
+import ru.job4j.utility.Utility;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,31 +17,24 @@ import javax.servlet.http.HttpSession;
 public class TicketController {
     private final MovieService movieService;
     private final TicketService ticketService;
-    private final TheatreService theatreService;
 
-    public TicketController(TicketService ticketService, TheatreService theatreService, MovieService movieService) {
+    public TicketController(TicketService ticketService, MovieService movieService) {
         this.ticketService = ticketService;
-        this.theatreService = theatreService;
         this.movieService = movieService;
     }
 
-    @GetMapping("/theatre/{id}")
-    public String placeInTheatreGet(Model model, @PathVariable("id") int id, HttpSession httpSession) {
-        model.addAttribute("idMovie", id);
-        model.addAttribute("theatreRows", theatreService.getRows());
-        model.addAttribute("theatreSeats", theatreService.getSeats());
-        return "theatre";
-    }
-
-    @PostMapping("/theatre")
-    public String placeInTheatrePost(@ModelAttribute Ticket ticket) {
-        ticketService.add(ticket);
-        return "redirect:/ticket";
-    }
-
-    @GetMapping("/ticket")
-    public String byeTicketPost(Model model, HttpSession httpSession) {
-        model.addAttribute("ticket", ticketService.findById(60));
+    @GetMapping("/ticket/{ticketId}")
+    public String byeTicketGet(Model model, @PathVariable("ticketId") int id, HttpSession httpSession) {
+        Utility.userGet(model, httpSession);
+        Ticket ticket = ticketService.findById(id);
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("movie", movieService.findById(ticket.getMovieId()));
         return "ticket";
+    }
+
+    @GetMapping("/byeSuccess")
+    public String byeSuccessGet(Model model, HttpSession httpSession) {
+        Utility.userGet(model, httpSession);
+        return "byeSuccess";
     }
 }

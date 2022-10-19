@@ -16,7 +16,7 @@ import java.util.List;
 public class MovieDbStore {
     private static final Logger LOG = LogManager.getLogger(MovieDbStore.class.getName());
     private static final String FIND_ALL = "SELECT * FROM movies";
-    private static final String ADD = "INSERT INTO movies(name) VALUES (?)";
+    private static final String ADD = "INSERT INTO movies(photo, name) VALUES (?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM movies WHERE id = ?";
 
     private final BasicDataSource pool;
@@ -75,8 +75,9 @@ public class MovieDbStore {
     }
 
     private Movie sqlGetMovie(ResultSet it) throws SQLException {
-        return new Movie(
+        Movie movie = new Movie(
                 it.getInt("id"),
                 it.getString("name"));
+        return movie;
     }
 }

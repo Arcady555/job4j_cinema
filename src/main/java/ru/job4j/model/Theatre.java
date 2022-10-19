@@ -4,6 +4,9 @@ public class Theatre {
     private int row;
     private int seat;
 
+    public Theatre() {
+    }
+
     public Theatre(int row, int seat) {
         this.row = row;
         this.seat = seat;

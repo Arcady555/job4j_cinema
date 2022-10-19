@@ -6,7 +6,8 @@ public class User {
     private int id;
     private String userName;
     private String email;
-    private int phone;
+    private String phone;
+    private String password;
 
     public User() {
     }
@@ -16,11 +17,12 @@ public class User {
         this.userName = userName;
     }
 
-    public User(int id, String userName, String email, int phone) {
+    public User(int id, String userName, String email, String phone, String password) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.phone = phone;
+        this.password = password;
     }
 
     public int getId() {
@@ -47,12 +49,20 @@ public class User {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

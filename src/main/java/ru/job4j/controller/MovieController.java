@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ru.job4j.service.MovieService;
+import ru.job4j.utility.Utility;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,6 +22,7 @@ public class MovieController {
 
     @GetMapping("/movieSelect")
     public String movieSelectGet(Model model, HttpSession httpSession) {
+        Utility.userGet(model, httpSession);
         model.addAttribute("movies", movieService.findAll());
         return "movieSelect";
     }

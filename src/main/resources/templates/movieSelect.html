@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- Required meta tags -->
@@ -29,6 +28,14 @@
             <div class="navbar-nav">
                 <a class="nav-item nav-link" th:href="@{/movieSelect}">Фильмы</a>
                 <a class="nav-item nav-link" th:href="@{/registration}">Добавить пользователя</a>
+                <a class="nav-item nav-link" th:if="${user.userName == 'Гость'}" th:href="@{/loginPage}">
+                    <span th:text="${user.userName}"></span>
+                    <span> | Войти</span>
+                </a>
+                <a class="nav-item nav-link" th:if="${user.userName != 'Гость'}" th:href="@{/loginout}">
+                    <span th:text="${user.userName}"></span>
+                    <span> | Выйти</span>
+                </a>
             </div>
         </div>
     </nav>
@@ -37,6 +44,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">Название фильма</th>
             </tr>
             </thead>

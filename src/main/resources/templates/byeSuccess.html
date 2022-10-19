@@ -42,25 +42,9 @@
     <div class="row pt-3">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Выберите ряд и место.
+                Приятного просмотра!
             </div>
-            <div class="card-body">
-                <form th:action="@{/theatre}" method="POST"  enctype="multipart/form-data">
-                    <input type="hidden" name="movieId" th:attr="value=${idMovie}" />
-                    <div  class="form-group">
-                        <label>Ряд</label>
-                        <select class="form-control" name="row">
-                            <option th:each="row : ${theatreRows}" th:text="${row}"></option>
-                        </select>
-                        <label>Место</label>
-                        <select class="form-control" name="cell">
-                            <option th:each="seat : ${theatreSeats}" th:text="${seat}"></option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Забронировать</button>
-                </form>
-            </div>
-        </div>
+    </div>
     </div>
 </div>
 </body>
