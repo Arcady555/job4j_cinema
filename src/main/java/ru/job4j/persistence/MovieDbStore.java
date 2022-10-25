@@ -16,7 +16,7 @@ import java.util.List;
 public class MovieDbStore {
     private static final Logger LOG = LogManager.getLogger(MovieDbStore.class.getName());
     private static final String FIND_ALL = "SELECT * FROM movies";
-    private static final String ADD = "INSERT INTO movies(photo, name) VALUES (?, ?)";
+    private static final String ADD = "INSERT INTO movies(logo, name) VALUES (?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM movies WHERE id = ?";
 
     private final BasicDataSource pool;
@@ -45,7 +45,8 @@ public class MovieDbStore {
     public void add(Movie movie) {
         try (Connection cn = pool.getConnection();
              PreparedStatement ps =  cn.prepareStatement(ADD, PreparedStatement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, movie.getName());
+            ps.setString(1, movie.getLogo());
+            ps.setString(2, movie.getName());
             ps.execute();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
@@ -77,6 +78,7 @@ public class MovieDbStore {
     private Movie sqlGetMovie(ResultSet it) throws SQLException {
         Movie movie = new Movie(
                 it.getInt("id"),
+                it.getString("logo"),
                 it.getString("name"));
         return movie;
     }

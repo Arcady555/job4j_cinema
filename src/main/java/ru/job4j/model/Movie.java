@@ -4,13 +4,15 @@ import java.util.Objects;
 
 public class Movie {
     private int id;
+    private String logo;
     private String name;
 
     public Movie() {
     }
 
-    public Movie(int id, String name) {
+    public Movie(int id, String logo, String name) {
         this.id = id;
+        this.logo = logo;
         this.name = name;
     }
 
@@ -20,6 +22,14 @@ public class Movie {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
     public String getName() {

@@ -53,6 +53,11 @@
                 <td th:text="${movie.id}" />
                 <td>
                     <a th:href="@{|/theatre/${movie.id}|}">
+                        <img th:attr="src=${movie.logo}" width="150"/>
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{|/theatre/${movie.id}|}">
                         <span th:text="${movie.name}"></span>
                     </a>
                 </td>

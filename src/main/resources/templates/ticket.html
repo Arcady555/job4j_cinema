@@ -54,18 +54,12 @@
                 <div>
                     <td>
                         <a th:href="@{|/theatre/${movie.id}|}">
-                            <span th:text=назад></span>
+                            <button type="button" class="btn btn-primary">Назад</button>
                         </a>
                         <a th:href="@{/byeSuccess}">
-                            <span th:text=купить></span>
+                            <button type="button" class="btn btn-primary">Купить</button>
                         </a>
                     </td>
-                  <!--  <a class="nav-item nav-link" th:href="@{|/theatre/${movie.id}|}">
-                        <button type="submit" class="btn btn-primary">Назад</button>
-                    </a>
-                    <a class="nav-item nav-link" th:href="@{/byeSuccess}">
-                        <button type="submit" class="btn btn-primary">Купить</button>
-                    </a>  -->
                 </div>
             </form>
         </div>

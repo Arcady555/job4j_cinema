@@ -1,1 +1,3 @@
-INSERT INTO movies (name) VALUES ('Film1');
+INSERT INTO movies (logo, name) VALUES ('https://static.tildacdn.com/tild6234-3766-4336-a563-303439643363/21.jpg', 'Film1');
+INSERT INTO movies (logo, name) VALUES ('https://mykaleidoscope.ru/uploads/posts/2021-03/1617067973_8-p-detskii-tortik-8.jpg', 'Film2');
+INSERT INTO movies (logo, name) VALUES ('https://mykaleidoscope.ru/uploads/posts/2021-09/1632725863_27-mykaleidoscope-ru-p-tortikov-krasivo-foto-27.jpg', 'Film3');
