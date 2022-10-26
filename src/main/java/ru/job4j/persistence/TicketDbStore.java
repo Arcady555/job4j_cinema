@@ -10,13 +10,14 @@ import ru.job4j.model.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @ThreadSafe
 public class TicketDbStore {
     private static final Logger LOG = LogManager.getLogger(TicketDbStore.class.getName());
     private static final String FIND_ALL = "SELECT * FROM tickets";
-    private static final String ADD = "INSERT INTO tickets(movie_id, pos_row, cell, user_id) VALUES (?, ?, ?, '1')";
+    private static final String ADD = "INSERT INTO tickets(movie_id, pos_row, cell, user_id) VALUES (?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM tickets WHERE id = ?";
     private static final String DELETE = "DELETE FROM tickets WHERE id = ?";
 
@@ -43,21 +44,25 @@ public class TicketDbStore {
         return tickets;
     }
 
-    public void add(Ticket ticket) {
+    public Optional<Ticket> add(Ticket ticket) {
+        Optional<Ticket> rsl = Optional.empty();
         try (Connection cn = pool.getConnection();
              PreparedStatement ps = cn.prepareStatement(ADD, PreparedStatement.RETURN_GENERATED_KEYS)) {
             ps.setInt(1, ticket.getMovieId());
             ps.setInt(2, ticket.getRow());
             ps.setInt(3, ticket.getCell());
+            ps.setInt(4, ticket.getUserId());
             ps.execute();
             try (ResultSet id = ps.getGeneratedKeys()) {
                 if (id.next()) {
                     ticket.setId(id.getInt(1));
                 }
             }
+            rsl = Optional.of(ticket);
         } catch (SQLException e) {
             LOG.error("SQLException", e);
         }
+        return rsl;
     }
 
     public Ticket findById(int id) {
@@ -92,8 +97,8 @@ public class TicketDbStore {
                 it.getInt("id"),
                 it.getInt("movie_id"),
                 it.getInt("pos_row"),
-                it.getInt("cell")
-                //     it.getInt("user_id")
+                it.getInt("cell"),
+                it.getInt("user_id")
         );
     }
 }

@@ -7,15 +7,17 @@ public class Ticket {
     private int movieId;
     private int row;
     private int cell;
+    private int userId;
 
     public Ticket() {
     }
 
-    public Ticket(int id, int movieId, int row, int cell) {
+    public Ticket(int id, int movieId, int row, int cell, int userId) {
         this.id = id;
         this.movieId = movieId;
         this.row = row;
         this.cell = cell;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -50,13 +52,13 @@ public class Ticket {
         this.cell = cell;
     }
 
- /**   public int getUserId() {
+    public int getUserId() {
         return userId;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
-    } */
+    }
 
     @Override
     public boolean equals(Object o) {

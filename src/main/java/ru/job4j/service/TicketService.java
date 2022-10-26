@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.persistence.TicketDbStore;
 import ru.job4j.model.Ticket;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @ThreadSafe
@@ -19,8 +20,8 @@ public class TicketService {
         return ticketDbStore.findAll();
     }
 
-    public void add(Ticket ticket) {
-        ticketDbStore.add(ticket);
+    public Optional<Ticket> add(Ticket ticket) {
+        return ticketDbStore.add(ticket);
     }
 
     public Ticket findById(int id) {

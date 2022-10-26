@@ -11,6 +11,7 @@
     <include file="scripts/001_ddl_create_users_table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/002_ddl_create_movies_table.sql" relativeToChangelogFile="true"/>
     <include file="scripts/003_ddl_create_tickets_table.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/004_dml_insert_movies_values.sql" relativeToChangelogFile="true"/>
-    <include file="scripts/005_dml_insert_users_values.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/004_mml_alter_table_tickets.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/005_dml_insert_movies_values.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/006_dml_insert_users_values.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.model.Ticket;
+import ru.job4j.model.User;
 import ru.job4j.service.TheatreService;
 import ru.job4j.service.TicketService;
 import ru.job4j.utility.Utility;
 
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 @ThreadSafe
@@ -29,14 +31,23 @@ public class TheatreController {
         model.addAttribute("idMovie", id);
         model.addAttribute("theatreRows", theatreService.getRows());
         model.addAttribute("theatreSeats", theatreService.getSeats());
-        model.addAttribute("ticket", new Ticket(0, id, 0, 0));
+        model.addAttribute("ticket", new Ticket(0, id, 0, 0, 0));
         return "theatre";
     }
 
     @PostMapping("/theatre")
     public String placeInTheatrePost(@ModelAttribute Ticket ticket) {
-        ticketService.add(ticket);
+        Optional<Ticket> ticketDb = ticketService.add(ticket);
+        if (ticketDb.isEmpty()) {
+            return "redirect:/failTicket";
+        }
         int ticketId = ticket.getId();
         return "redirect:/ticket/" + ticketId;
+    }
+
+    @GetMapping("/failTicket")
+    public String fail(Model model, HttpSession httpSession) {
+        Utility.userGet(model, httpSession);
+        return "printFailTicket";
     }
 }

@@ -1,0 +1,1 @@
+ALTER TABLE tickets ADD UNIQUE (movie_id, pos_row, cell);
